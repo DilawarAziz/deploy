@@ -1,0 +1,287 @@
+
+
+
+*{
+  padding:0px;
+  margin:0px;
+}
+.navbar1{
+background-color: royalblue;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+.span{
+  display: flex;
+/* margin :0px; */
+}
+.span p{
+  margin: 0px 15px 0px 0px;
+  font-size:23px;
+  color: white;
+}
+
+.signin{
+  height:1000px;
+  width:100%;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inchild{
+  /* text-align: center; */
+  display: flex;
+  width:70%;
+  height:500px;
+  box-shadow: 10px 10px 5px grey;
+  border-radius: 12px;
+  justify-content: space-between;
+
+}
+.inchild h3{
+margin: 0px;
+}
+.img{
+  display: flex;
+  align-items: center;
+}
+.img img{
+  margin-right: 10px;
+  border-radius: 12px;
+}
+.form{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.signup{
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  height:800px;
+  
+  /* width:60% */
+}
+.row{
+  box-shadow: 5px 5px 10px grey;
+  width:70%;
+  border-radius: 23px;
+  background-color:rgb(251, 250, 243);
+  padding:23px
+}
+/* .col{
+  display:inline-block;
+  /* self-align:center */
+.profilemain{
+
+
+  
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  /* flex-direction: column; */
+  height:700px;
+}
+.profilechild{
+  background-color:rgb(251, 250, 243);
+  border-radius: 23px;
+  justify-content: space-around;
+  display: flex;
+  width :70%;
+  height:500px;
+  box-shadow: 10px 10px 5px grey;
+}
+.profiledata{
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-self:center
+}
+.profileimg{
+  /* padding-top: 23px; */
+  border-radius: 12px;
+  margin:3px;
+  width:100%;
+ height:400px;
+}
+.imgparent{
+  display: flex;
+  width:50%;
+  align-items: center;
+}
+li{
+  list-style:circle;
+  /* list-style-position: inside; */
+}
+.proheading{
+  border-radius: 12px;
+  padding:0px 10px 0px 10px ;
+  border :5px solid royalblue;
+  font-size:23px;
+  color: black;
+  text-align:center
+}
+.contactheading{
+  border-radius: 12px;
+  padding:0px 10px 0px 10px ;
+  border :5px solid royalblue;
+  font-size:2vw;
+  color: black;
+  /* width:100%; */
+  text-align:center
+}
+.sign{
+  border-radius: 60px;
+  border :2px solid royalblue;
+  margin: 0px;
+  background-color: white;
+  color:black !important;
+  padding:0px 10px 0px 10px ;
+  /* text-decoration: none;/ */
+  
+}
+
+.contactmain,.login{
+  display:flex;
+  width:100%;
+  justify-content:center;
+  align-items: center;
+  height:900px;
+  background-color:rgb(251, 250, 243);
+}
+.contactchild{
+  display:flex;
+  width:60%;
+  box-shadow:2px 4px 5px gray;
+  border-radius:23px;
+  background-color:white !important;
+  padding:23px
+}
+.loginchild{
+  display:flex;
+width:50%;
+box-shadow:2px 4px 5px gray;
+border-radius:23px;
+background-color:white !important;
+padding:23px
+
+}
+.contactchild2{
+  display:flex;
+  align-items: center;
+  flex-direction:column;
+  justify-content:space-around;
+  width:60%;
+  /* border:3px solid red; */
+  height:500px;
+  margin:0 auto ;
+}
+.contactchild h1{
+  color:black
+}
+.contactTextArea,.contactinput{
+  box-shadow:2px 4px 5px gray;
+  width:90%;
+  border-top:none;
+  border-left:none;
+  border-right:none;
+  border-bottom:none;
+  padding-left:23px;
+  /* color:black */
+  border-radius:6px;
+}
+.contactinput{
+height:60px;
+
+}
+.radiobtn{
+  display:flex;
+  /* justify-content:space-around */
+  /* flex-direction: row; */
+ border: 3px solid red;
+  /* color :; */
+  width:50%;
+  /* color */
+}
+.imgcontact{
+  width:40%;
+  margin-left: 6px;
+  /* height: 20px; */
+}
+.login{
+
+}
+.loginchild2{
+  /* background-image:"https://image.shutterstock.com/image-photo/businessman-fingerprint-scan-biometric-authentication-260nw-759104368.jpg"; */
+  /* background-size: 40%; */
+  display:flex;
+width:70%;
+flex-direction:column;
+justify-content:space-around !important;
+/* box-shadow:2px 4px 5px gray; */
+border-radius:23px;
+background-color:white !important;
+padding:23px;
+height:400px;
+align-items:center;
+
+}
+.ptcontinput{
+  width:100% 
+}
+.loginimg{
+  width:100%;
+height:450px
+}
+   .ptloginimg{
+     width: 50%;
+     text-align:center
+}
+
+.form-login{
+  width:100%;
+  margin:0 auto  ;
+  height: 50px;
+  border-radius: 9px;
+  padding-left: 23px;
+}
+.loginchild2{
+  height :500px
+}
+.loginbtn{
+  border-radius: 9px;
+  width:80%;
+  height:40px;
+  color:white
+}
+.logo{
+  color:white;
+  text-decoration: none;
+}
+.proheading2{
+  border-radius: 12px;
+  padding:0px 10px 0px 10px ;
+  /* border :5px solid royalblue; */
+  font-size:2vw;
+  color: black;
+}
+.loginimg2{
+  width:100px;
+  height:100px
+}
+
+
+@import  url('./media.css');
+
+
+
+
+
+
+
+
