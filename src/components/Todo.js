@@ -1,22 +1,22 @@
 import React from "react";
 import "../Todo.css";
 import { foo } from "../container/action/action";
-
-import { connect, useDispatch } from "react-redux";
-import { tododata } from "../container/action/action";
+import { connect } from "react-redux";
 import app from "./firebase";
+import deleteimg from './delete.png';
+import addimg from './add.png';
+import editimg from './edit.ico';
+import Loader from "react-loader-spinner";
+
 import {
   getDatabase,
   update,
   ref,
-  get,
   onValue,
-  push,
   set,
   remove,
-  child,
-} from "firebase/database";
 
+} from "firebase/database";
 class Todo extends React.Component {
   constructor() {
     super();
@@ -27,55 +27,59 @@ class Todo extends React.Component {
       bool: false,
       key: "",
       keyvalue: "",
+      spiner:true,
       Title:" you can save all of your daily activites here click on the add button to add your daily challenges and any kind of reminder you want..!"
     };
   }
-
-
   componentDidMount() {
+  //  this.state.spiner=true
     const db = getDatabase(app);
+   
     onValue(ref(db, "users/" + this.props.useruid+'/Todos'), (snapshot) => {
-      if (snapshot.val()) {
+      console.log(snapshot.val(),"snap")
+      if (snapshot.val() ) {
         this.setState({
           arr: [...this.state.arr, ...Object.keys(snapshot.val())],
-        });
-        // Object.keys(snapshot.val()).map((v) => {
-        //   console.log("mounting comp",snapshot.val())
-        //   console.log(v);
-        //   this.props.foo(v)
-        // });
+          spiner:false
+        }
+        )
+     
       }
-    });
+      else{
+        this.setState({
+          // arr: [...this.state.arr, ...Object.keys(snapshot.val())],
+          spiner:false
+        })
+      }
+    });  
+   
   }
 
-  add_todo = () => {
+  add_todo =  () => {
     const db = getDatabase(app);
-    set(ref(db, "users/" + this.props.useruid + "/Todos/" + this.state.value), {
+   set(ref(db, "users/" + this.props.useruid + "/Todos/" + this.state.value), {
       Todo: this.state.value,
     });
+      
+      this.setState({
+        arr: [...this.state.arr, this.state.value],
+        value: "",
+      });
 
-    onValue(
-      ref(db, "users/" + this.props.useruid + "/Todos/" + this.state.value),
-      (snapshot) => {
-        if (snapshot.val().Todo) {
-          
-          this.setState({
-            arr: [...this.state.arr, snapshot.val().Todo],
-            value: "",
-          });
-        }
-      }
-    );
   };
-
-  delete_todo = (index, ) => {
+  
+  delete_todo = (index, v) => {
     const db = getDatabase(app);
-    remove(ref(db, "users/" + this.props.useruid + "/Todos/" + this.state.keyvalue));
-    this.state.arr.splice(index, 1);
-    this.setState({
-      arr: this.state.arr,
-    });
-  };
+    remove(ref(db, "users/" + this.props.useruid + "/Todos/" + v));
+   
+
+      
+      this.state.arr.splice(index, 1);
+    
+      this.setState({
+        arr: this.state.arr,
+      });
+    };
 
   edit_value = (v, i) => {
     this.state.bool = true;
@@ -86,6 +90,7 @@ class Todo extends React.Component {
       keyvalue: v,
     });
   };
+
   handleChange = (a, i) => {
     this.state.arr[i] = a.target.value;
   };
@@ -109,19 +114,25 @@ class Todo extends React.Component {
   };
 
   delete_all = () => {
-    const db = getDatabase(app);
-    remove(ref(db, "users/" + this.props.useruid+"/Todos"));
-
-    this.setState({
-      arr: [],
-    });
+    let conf = window.confirm("Are You Sure To Delete All Todos")
+    if (conf) {
+      
+      const db = getDatabase(app);
+      remove(ref(db, "users/" + this.props.useruid+"/Todos"));
+  
+      this.setState({
+        arr: [],
+      });
+    }
   };
 
   render() {
     console.log(this.props.data1)
     return (
       <div className='Todo-main' style={{ textAlign: "center" }}>
+   
         <div className='Todo-child'>
+            <h2 className="contacth">Add Your Todo Here</h2>
           <div className='Todo-parent'>
             <input
               type='text'
@@ -138,45 +149,44 @@ class Todo extends React.Component {
                   Update
                 </button>
               )}
-              <button onClick={this.add_todo} className='btn1 pmt'>
-                Add Todo
-              </button>
-              <button onClick={this.delete_all} className='btn1 pmt '>
-                Delete All{" "}
-              </button>
+              <img onClick={this.add_todo} className="delimg1" src={addimg} alt = "img" />
+               
+                <img onClick={this.delete_all} className="delimg1" src={deleteimg} alt = "img" />
+          
             </div>
           </div>
-          <ul id='todoul' className='todo-ul'>
+       {!this.state.spiner?   <ul id='todoul' className='todo-ul'>
             {!this.state.arr[0]&&<h1 style={{color:"black"}}>{this.state.Title}</h1>}
             {this.state.arr.map((v, i) => (
               <li className='todo-li' key={i}>
+           
                 {v}
                 <div className='li-todo-btnpt'>
-                  <button
-                    className='btn1 li-todo-btn'
-                    onClick={() => this.edit_value(v, i)}
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    className='btn1 li-todo-btn'
-                    onClick={() => this.delete_todo(i, v)}
-                  >
-                    Delete
-                  </button>
+               
+        <img onClick={() => this.edit_value(v, i)}  className="delimg" src={editimg} alt = "img" />
+                    
+        <img onClick={() => this.delete_todo(i, v)} className="delimg" src={deleteimg} alt = "img" />
+   
                 </div>
               </li>
             ))}
-          </ul>
+
+          </ul>:  <div className="spinerpt">  <Loader
+          className="spiner"
+        type="Bars"
+        color="#00BFFF"
+    
+      /></div>}
         </div>
       </div>
     );
   }
 }
+
 const mapStateToProps = (state) => ({
 data1:state.useruid
 });
+
 const mapDispatchToProps = (dispatch) => ({
   foo: (v) => dispatch(foo(v)),
 });

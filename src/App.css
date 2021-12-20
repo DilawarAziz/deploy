@@ -92,9 +92,10 @@ margin: 0px;
   border-radius: 23px;
   justify-content: space-around;
   display: flex;
-  width :70%;
+  width :73%;
   height:500px;
-  box-shadow: 10px 10px 5px grey;
+  
+  box-shadow: -10px 10px 5px grey;
 }
 .profiledata{
   display: flex;
@@ -108,6 +109,7 @@ margin: 0px;
   margin:3px;
   width:100%;
  height:400px;
+ object-fit:contain;
 }
 .imgparent{
   display: flex;
@@ -156,6 +158,7 @@ li{
 }
 .contactchild{
   display:flex;
+  margin:0 auto;
   width:60%;
   box-shadow:2px 4px 5px gray;
   border-radius:23px;
@@ -274,6 +277,54 @@ height:450px
   width:100px;
   height:100px
 }
+
+
+
+
+
+
+
+
+.humburgericon{
+width:35px;
+height:30px;
+}
+.humburgeiconprt{
+  
+  padding:6px
+}
+
+
+
+
+
+  /* .span p{
+    margin: 0px 15px 0px 0px;
+    font-size:23px;
+    color: white;
+  }
+    */
+
+.spinerpt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+.spiner{
+  width: 10%;
+  height:200px
+}
+.spiner1{
+  width:100%;
+  height:200px
+}
+
+
+
+
+
+
 
 
 @import  url('./media.css');
